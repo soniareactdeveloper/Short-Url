@@ -7,7 +7,10 @@ const ShortUrl = new Schema({
     type : String ,
     required : true,
   },
-  shortId : String,
+  shortId : {
+    type: String,
+    required : true,
+  }
 
 });
 
