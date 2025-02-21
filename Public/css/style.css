@@ -1,0 +1,117 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: #008C8C;
+  padding: 15px 0;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #d9f9f9;
+}
+
+/* URL Shortener Box */
+.short-url-box {
+  background: #f9f9f9;
+  padding: 25px;
+  margin-top: 40px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #008C8C;
+  margin-bottom: 20px;
+}
+
+.url-input {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 2px solid #009999;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: border 0.3s ease;
+}
+
+.url-input:focus {
+  border: 2px solid #006666;
+  outline: none;
+}
+
+/* Generate Button */
+.generate-btn {
+  background: #00b3b3;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.generate-btn:hover {
+  background: #009999;
+}
+
+/* Short URL Display */
+.result {
+  margin-top: 20px;
+}
+
+.short-url {
+  background: #e5f8f8;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #008C8C;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
