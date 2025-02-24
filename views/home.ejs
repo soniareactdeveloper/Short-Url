@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Short URL Generator</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"> 
 </head>
-<body>
+<body class="body">
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="container">
+    <div >
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
       </ul>
     </div>
   </nav>
@@ -27,10 +27,27 @@
       <button class="generate-btn">Generate Short URL</button>
       <div class="result">
         <p>Your Short URL:</p>
-        <div class="short-url">https://short.ly/xyz123</div>
+        <div class="short-url" id="shortUrl">https://short.ly/xyz123</div>
+        <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Short URL Generator. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function copyToClipboard() {
+      const shortUrl = document.getElementById("shortUrl").textContent;
+      navigator.clipboard.writeText(shortUrl).then(() => {
+        alert("Short URL copied to clipboard!");
+      }).catch(err => {
+        console.error("Failed to copy: ", err);
+      });
+    }
+  </script>
 
 </body>
 </html>
