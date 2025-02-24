@@ -11,7 +11,7 @@ const ShortUrl = new Schema({
     type: String,
     required : true,
   },
-  visithistory : [
+  visitHistory : [
     {
      clickedAt :{
        type : Date,
