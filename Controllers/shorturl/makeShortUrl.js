@@ -6,12 +6,16 @@ const makeShortUrl = async (req, res) => {
   const { url } = req.body;
 
   if (!url) {
-    return res.status(400).json({ error: "URL is required" });
+    return res.render("home",{
+      error: "URL is required",
+    })
   }
 
   // Validate URL format
   if (!isUrlValid(url)) {
-    return res.status(400).json({ error: "Invalid URL format" });
+    return res.render("home",{
+      error: "URL is invalid",
+    })
   }
 
   // Generate short ID

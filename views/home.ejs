@@ -27,6 +27,9 @@
         <h1>Shorten Your URL</h1>
         <input type="text" placeholder="Enter your long URL" class="url-input" name="url" value="<%= locals.longUrl %>">
         <button type="submit" class="generate-btn">Generate Short URL</button>
+        <% if (locals.error) { %>
+            <p class="error"><%= locals.error %></p>
+        <% } %>
       </form>
       <% if (locals.shortUrl) { %>
         <div class="result">
