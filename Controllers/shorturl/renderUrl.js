@@ -10,8 +10,7 @@ const renderUrl = async (req, res) => {
       return res.status(404).json({ error: "Short URL not found" });
     }
 
-   console.log(existUrl.url);  
-
+   res.redirect(existUrl.url);  
 };
 
 module.exports = renderUrl;

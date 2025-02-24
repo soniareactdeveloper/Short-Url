@@ -4,12 +4,12 @@ const path = require('path');
 const router = require('./Router');
 const app = express()
 const port = 8000
-app.set("view engine", "ejs");
-
-dbConnect()
 app.use(express.json());
+app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'Public')));
+app.use(express.urlencoded({ extended: true }))
 app.use(router)
+dbConnect()
 
 
 app.listen(port, () => {

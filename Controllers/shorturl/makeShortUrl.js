@@ -5,7 +5,6 @@ const ShortUrlSchema = require("../../Model/ShortUrlSchema");
 const makeShortUrl = async (req, res) => {
   const { url } = req.body;
 
-  // Check if URL is provided
   if (!url) {
     return res.status(400).json({ error: "URL is required" });
   }
@@ -26,11 +25,11 @@ const makeShortUrl = async (req, res) => {
 
   // If URL already exists, return the existing short URL
   if (existUrl) {
-    return res.json({
-      message: "Short URL already exists",
-      longUrl : existUrl.url,
-      shortUrl: `https://localhost:8000/${existUrl.shortID}`,
-    });
+    return res.render("home",{
+      message: "Short URL generated",
+      longUrl: existUrl.url,
+      shortUrl: `http://localhost:8000/${shortId}`,
+    })
   }
   
 
@@ -41,14 +40,14 @@ const makeShortUrl = async (req, res) => {
   });
 
   try {
-    await shortUrl.save(); // Save to DB
+    await shortUrl.save(); 
 
     // Return the generated short URL
-    res.json({
+    res.render("home",{
       message: "Short URL generated",
-      longUrl: url, 
-      shortUrl: `https://localhost:8000/${shortId}`,
-    });
+      longUrl: url,
+      shortUrl: `http://localhost:8000/${shortId}`,
+    })
   } catch (error) {
     res.status(500).json({ error: "Error saving to the database" });
   }
