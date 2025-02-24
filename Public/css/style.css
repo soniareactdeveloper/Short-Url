@@ -17,6 +17,8 @@ body {
   background: linear-gradient(135deg, #022f33 5%, #065a69 95%);
   min-height: 100vh;
 }
+
+/* Navbar Styles */
 .navbar {
   display: flex;
   background: linear-gradient(135deg, #022f33 5%, #065a69 95%);
@@ -40,13 +42,17 @@ body {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .nav-links li a:hover {
   color: #13acdb;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Container Styles */
 .container {
   display: flex;
   justify-content: center;
@@ -54,6 +60,7 @@ body {
   margin: 40px 60px;
 }
 
+/* Short URL Box Styles */
 .short-url-box {
   background: #ffffff;
   padding: 40px;
@@ -109,6 +116,7 @@ h1 {
   font-weight: bold;
   color: #022f33;
 }
+
 .short-url {
   background: #E3FDFD;
   padding: 12px;
@@ -119,6 +127,7 @@ h1 {
   word-break: break-all;
   border: 2px dashed #065a69;
 }
+
 .copy-btn {
   background: linear-gradient(135deg, #087c89, #049b9b);
 }
@@ -127,7 +136,7 @@ h1 {
   background: #049b9b;
 }
 
-
+/* Footer Styles */
 .footer {
   background: linear-gradient(135deg, #022f33 5%, #065a69 95%);
   color: white;
@@ -144,4 +153,50 @@ h1 {
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container {
+    margin: 20px 30px;
+  }
+
+  .short-url-box {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .url-input {
+    padding: 10px;
+  }
+
+  .generate-btn, .copy-btn {
+    padding: 10px 15px;
+  }
+
+  .footer {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+  .url-input, .generate-btn, .copy-btn {
+    font-size: 16px;
+  }
+
+  .short-url-box {
+    padding: 20px;
+  }
 }
