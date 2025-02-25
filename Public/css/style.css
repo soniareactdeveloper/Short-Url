@@ -168,6 +168,11 @@ h1 {
   background-color: #83d6d6;
   transform: scale(1);
 }
+.cta-section p {
+  font-size: 16px;
+  margin-bottom: 70px;
+  color: #f1e9e9;
+}
 
 /* Footer */
 .footer {
@@ -371,5 +376,4 @@ h1 {
   cursor: pointer;
   color: #0c6f76;
 }
-
 

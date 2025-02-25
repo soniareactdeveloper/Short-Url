@@ -5,7 +5,7 @@ const { renderUrl, visitHistory } = require('../Controllers/shorturl/renderUrl')
 const router = express.Router();
 
 // API route
-router.use("/api/v1", apiRoute);
+router.use(process.env.BASE_URL, apiRoute);
 
 // Static pages
 router.get("/", homePage);
