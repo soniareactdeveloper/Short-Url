@@ -4,7 +4,6 @@ const dbConnect = require('./Config/dbConnect');
 const path = require('path');
 const router = require('./Router');
 const app = express()
-const port = 8000
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'Public')));
@@ -13,8 +12,8 @@ app.use(router)
 dbConnect()
 
 
-app.listen(port, () => {
-  console.log(`server is running on ${port}`)
+app.listen(8000, () => {
+  console.log(`server is running on 8000`)
 })
 
 
