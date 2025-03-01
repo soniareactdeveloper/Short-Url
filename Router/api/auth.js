@@ -5,7 +5,7 @@ const authRoute = express.Router();
 
 authRoute.post('/registrations', registrations);
 
-authRoute.post('/logins', login)
+authRoute.post('/login', login)
 
 
 module.exports = authRoute;
