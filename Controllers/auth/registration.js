@@ -1,6 +1,8 @@
 const validateEmail = require("../../Helper/validationEmail");
 const validatePassword = require("../../Helper/validationPassword");
 const UserSchema = require("../../Model/UserSchema");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const registrations = async (req, res) => {
   const { fullname, email, password } = req.body;
@@ -36,16 +38,16 @@ const registrations = async (req, res) => {
     return res.json({ error: "User already exists" });
   }
 
-  console.log(email);
-
-  // Create and save the user
-  const user = new UserSchema({
-    fullname,
-    email,
-    password,
+  bcrypt.hash( password, saltRounds, function(err, hash) {
+    const user = new UserSchema({
+      fullname,
+      email,
+      password:hash
+    });
+  
+    user.save();
   });
 
-  await user.save();
 
   // Registration successful
   res.json({ message: "Registration successful" });
