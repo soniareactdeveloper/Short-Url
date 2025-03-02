@@ -13,7 +13,7 @@ router.get("/", homePage);
 router.get("/login", loginPage);
 router.get("/register", registerPage);
 router.get("/dashboard", validateUser, (req, res) => {
-  res.send("dashboard")
+ res.send(req.user)
 });
 
 
