@@ -1,17 +1,23 @@
 const jwt = require("jsonwebtoken");
 
 const validateUser = (req, res, next) => {
-  const token = req.cookies.access_token;
-   if (!token) return res.status(401).json({ error: "Unauthorized" });
-
   try {
-    var decoded = jwt.verify(token, process.env.JWT_KEY);
+  const token = req.cookies;
 
-    if (decoded.data) {
-      req.user = decoded.data;
-      next();
+  if (token.access_token) {
+      jwt.verify(token.access_token, process.env.JWT_KEY, function(err, decoded) {
+        if (err) {
+          req.user = null;
+          next();
+        }
+        if (decoded.data) {
+          req.user = decoded.data;
+          next();
+        }
+      });
     } else {
-      return res.status(401).json({ error: "Unauthorized" });
+      req.user = null;
+      next();
     }
   } catch (error) {
     return res.status(401).json({ error: "Unauthorized" });

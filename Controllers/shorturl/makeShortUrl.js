@@ -20,41 +20,46 @@ const makeShortUrl = async (req, res) => {
 
   // Generate short ID
   const shortId = generateShortId(url);
-
-  try {
-    const existUrl = await ShortUrlSchema.findOneAndUpdate(
-      { url },
-      { $set: { shortID: shortId } },
-      { new: true }
-    );
-
-    // If URL already exists, return the existing short URL
-    if (existUrl) {
-      return res.render("home", {
+  if(req.user){
+  
+  }else {
+    try {
+      const existUrl = await ShortUrlSchema.findOneAndUpdate(
+        { url },
+        { $set: { shortID: shortId } },
+        { new: true }
+      );
+  
+      // If URL already exists, return the existing short URL
+      if (existUrl) {
+        return res.render("home", {
+          message: "Short URL Updated",
+          longUrl: existUrl.url,
+          shortUrl: `http://localhost:8000/${shortId}`,
+        });
+      }
+  
+      // Save short URL in database
+      const shortUrl = new ShortUrlSchema({
+        url: url,
+        shortID: shortId,
+      });
+  
+      await shortUrl.save();
+  
+      // Return the generated short URL
+      res.render("home", {
         message: "Short URL generated",
-        longUrl: existUrl.url,
+        longUrl: url,
         shortUrl: `http://localhost:8000/${shortId}`,
       });
+    } catch (error) {
+      console.error(error); 
+      res.status(500).json({ error: "Error saving to the database" });
     }
 
-    // Save short URL in database
-    const shortUrl = new ShortUrlSchema({
-      url: url,
-      shortID: shortId,
-    });
-
-    await shortUrl.save();
-
-    // Return the generated short URL
-    res.render("home", {
-      message: "Short URL generated",
-      longUrl: url,
-      shortUrl: `http://localhost:8000/${shortId}`,
-    });
-  } catch (error) {
-    console.error(error); 
-    res.status(500).json({ error: "Error saving to the database" });
   }
+
 };
 
 module.exports = makeShortUrl;

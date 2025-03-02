@@ -14,6 +14,7 @@ router.get("/login", loginPage);
 router.get("/register", registerPage);
 router.get("/dashboard", validateUser, (req, res) => {
  res.send(req.user)
+  console.log(req.user)
 });
 
 
