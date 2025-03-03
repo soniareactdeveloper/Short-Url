@@ -4,13 +4,13 @@ const dbConnect = require('./Config/dbConnect');
 const path = require('path');
 const router = require('./Router');
 const app = express()
-app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'Public')));
 app.use(express.urlencoded({ extended: true }))
+ app.use(express.json());
 var cookieParser = require('cookie-parser')
 app.use(cookieParser())
-app.use(router)
+ app.use(router)
 dbConnect()
 
 
@@ -19,5 +19,5 @@ app.listen(8000, () => {
 })
 
 
-// mongodb connection passwords
+ // mongodb connection passwords
 // q2ewaG94bPO6MBgK

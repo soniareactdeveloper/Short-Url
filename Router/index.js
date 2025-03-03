@@ -1,8 +1,8 @@
 const express = require('express');
 const apiRoute = require('./api');
 const { homePage, loginPage, registerPage } = require('./staticFile');
-const { renderUrl, visitHistory } = require('../Controllers/shorturl/renderUrl');
 const validateUser = require('../middleware/AuthValidation');
+const renderUrl = require('../Controllers/shorturl/renderUrl');
 const router = express.Router();
 
 // API route
@@ -19,7 +19,6 @@ router.get("/dashboard", validateUser, (req, res) => {
 
 
 router.get("/:shortID", renderUrl);
-router.get("/visithistory/:shortID", visitHistory);
 
 router.use((req, res) => {
   res.render("error");

@@ -53,7 +53,7 @@ const registrations = async (req, res) => {
       await user.save();
 
       // Registration successful
-      res.json({ message: "Registration successful" });
+      res.redirect('/login');
     });
   } catch (error) {
     console.error("Error in registration:", error);

@@ -1,7 +1,7 @@
 <%- include ("./particals/Headers") %>
 <div class="form-container">
     <h1>Register</h1>
-    <form>
+    <form action="http://localhost:8000/api/v1/auth/registrations" method="post">
         <input type="text" class="input-field" placeholder="Full Name" name="fullname" required>
         <input type="email" class="input-field" placeholder="Email" name="email" required>
         

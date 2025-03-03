@@ -11,6 +11,10 @@ const ShortUrl = new Schema({
     type: String,
     required : true,
   },
+  isAuth :{
+    type: Boolean,
+    default: false,
+  },
   visitHistory : [
     {
      clickedAt :{
