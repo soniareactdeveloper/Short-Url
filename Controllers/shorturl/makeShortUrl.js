@@ -41,7 +41,9 @@ const makeShortUrl = async (req, res) => {
           message: "Short URL Updated",
           longUrl: existUrl.url,
           shortUrl: `http://localhost:8000/${shortId}`,
+          loggedUser: req.user,
         });
+      
       }
 
       // Save new short URL in the database

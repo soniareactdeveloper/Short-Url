@@ -12,11 +12,19 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div >
+    <div>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
+        <% if (locals.loggedUser) { %>
+          <li><a href="/dashboard">dashboard</a></li>
+          <li><a href="/logout">Log Out</a></li>
+        <% } else { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        <% } %>
       </ul>
     </div>
   </nav>
+
+</body>
+</html>

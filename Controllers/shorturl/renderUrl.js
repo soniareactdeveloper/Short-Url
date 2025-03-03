@@ -4,7 +4,7 @@ const renderUrl = async (req, res) => {
   const shortID = req.params.shortID;
 
   try {
-    const existUrl = await ShortUrlSchema.findOneAndUpdate({ shortID });
+    const existUrl = await ShortUrlSchema.findOne({ shortID });
 
     if (!existUrl) {
       return res.render("error", {

@@ -1,0 +1,50 @@
+<%- include ("./particals/Headers") %>
+
+<!-- Main Content -->
+<main class="dashboard-content">
+  <h1 class="dashboard-title">Welcome to Your Visit History Dashboard</h1>
+  
+  <!-- User Information Section -->
+  <div class="user-info">
+    <p><strong>Name: </strong><%= urlHistory.fullname %></p>
+    <p><strong>Email:</strong> <%= urlHistory.email %></p>
+  </div>
+
+  <p class="dashboard-description">Manage and track the visit history of your shortened URLs here.</p>
+
+  <!-- URL Visit History Cards -->
+  <div class="dashboard-cards-container">
+    <!-- Loop through each shortened URL data -->
+    <% if (locals.urlHistory) { %>
+      <% urlHistory.shortUrls.forEach(item => { %>
+        <div class="dashboard-card">
+          <div class="dashboard-card-header">
+            <h3 class="dashboard-card-title">Short URL: <a href="http://localhost:8000/<%= item.shortID %>" class="dashboard-card-link">short.ly/<%= item.shortID %></a></h3>
+          </div>
+          <div class="dashboard-card-body">
+            <p><strong>Original URL:</strong> <%= item.url %></p>
+            <p><strong>Clicks:</strong> <%= item.visitHistory.length %></p>
+            
+            <!-- Loop through each visitHistory item for the current URL -->
+            <div class="visit-history">
+              <% if (item.visitHistory.length > 0) { %>
+                <% item.visitHistory.forEach(element => { %>
+                  <div class="visit-history-item">
+                    <p><strong>Last Visited:</strong> <%= element.clickedAt.toLocaleDateString() %></p>
+                  </div>
+                <% }) %>
+              <% } else { %>
+                <p>No visits yet.</p>
+              <% } %>
+            </div>
+          </div>
+          <div class="dashboard-card-footer">
+            <button class="dashboard-btn dashboard-copy-btn"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</main>
+
+<%- include ("./particals/Footer") %>

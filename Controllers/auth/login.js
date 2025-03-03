@@ -40,11 +40,7 @@ const login = async (req, res) => {
       process.env.JWT_KEY,
       { expiresIn: "1d" }
     );
-
-    // Fetch user details without password
-    const loggedUser = await UserSchema.findOne({ email }).select("-password");
-
-    // Set cookie and redirect
+     // Set cookie and redirect
     res
       .cookie("access_token", access_token, {
         httpOnly: true,

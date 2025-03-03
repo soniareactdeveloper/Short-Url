@@ -377,3 +377,207 @@ h1 {
   color: #0c6f76;
 }
 
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(135deg, #022f33, #065a69);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin: 15px 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.menu li a i {
+  margin-right: 10px;
+}
+
+.dashboard-content {
+  background-color: #fff;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+  font-size: 2em;
+  color: #065360;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dashboard-description {
+  color: #777;
+  font-size: 1.1em; 
+  margin-bottom: 25px;
+}
+
+.user-info {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.user-info p {
+  margin: 5px 0;
+  font-size: 1em; 
+  color: #333;
+}
+
+.user-info strong {
+  color: #065360;
+}
+
+/* Cards Layout */
+.dashboard-cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensure cards wrap when the screen is narrow */
+  justify-content: space-evenly; /* Distribute cards evenly with equal spacing */
+  gap: 20px; /* Proper space between cards */
+  margin-top: 20px;
+}
+
+/* Card */
+.dashboard-card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 350px; /* Ensures cards do not get too wide */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  margin: 0;
+}
+
+/* Hover effect for cards */
+.dashboard-card:hover {
+  transform: translateY(-2px);
+}
+
+
+.dashboard-card-header {
+  margin-bottom: 15px;
+}
+
+.dashboard-card-title {
+  font-size: 1.3em;
+  color: #065360;
+  margin-bottom: 5px;
+}
+
+.dashboard-card-link {
+  color: #065360;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.dashboard-card-link:hover {
+  text-decoration: underline;
+  color: #053e42;
+}
+
+.dashboard-card-body {
+  margin-bottom: 90px;
+}
+
+.dashboard-card-body p {
+  font-size: 10px;
+  color: #333;
+  padding: 10px 0; 
+}
+
+.visit-history {
+  margin-top: 10px;
+}
+
+.visit-history-item {
+  background-color: #f9f9f9;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.dashboard-card-footer {
+  text-align: right;
+  margin-top: 10px; /* Space from body to footer */
+}
+
+.dashboard-btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dashboard-copy-btn {
+  background-color: #065360;
+  color: white;
+  border: none;
+}
+
+.dashboard-copy-btn:hover {
+  background-color: #053e42;
+}
+
+.dashboard-btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .dashboard-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard-title {
+    font-size: 1.8em;
+  }
+
+  .dashboard-description {
+    font-size: 1em;
+  }
+
+  .user-info {
+    padding: 12px;
+  }
+
+  .user-info p {
+    font-size: 0.9em;
+  }
+
+  .dashboard-btn {
+    font-size: 0.85em;
+    padding: 7px 14px;
+  }
+}
