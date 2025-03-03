@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-      console.log(email,password);
+    console.log(email, password);
 
     // Validate email
     if (!email) {
       return res.status(400).json({ error: "Email is required" });
-     }
+    }
 
     // Validate password
     if (!password) {
@@ -44,17 +44,19 @@ const login = async (req, res) => {
     // Fetch user details without password
     const loggedUser = await UserSchema.findOne({ email }).select("-password");
 
-     // Set cookie with security options
+    // Set cookie and redirect
     res
-      .status(200)
-      .cookie("access_token", access_token)
-      .json({ message: "Login successful", loggedUser });
+      .cookie("access_token", access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Strict",
+      })
+      .redirect("/");
 
-  }catch (error) {
+  } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
 
 module.exports = login;
