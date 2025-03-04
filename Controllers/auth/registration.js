@@ -1,7 +1,7 @@
 const validateEmail = require("../../Helper/validationEmail");
 const validatePassword = require("../../Helper/validationPassword");
 const UserSchema = require("../../Model/UserSchema");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 const registrations = async (req, res) => {
