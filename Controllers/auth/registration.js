@@ -1,8 +1,7 @@
 const validateEmail = require("../../Helper/validationEmail");
 const validatePassword = require("../../Helper/validationPassword");
 const UserSchema = require("../../Model/UserSchema");
-const bcrypt = require('bcryptjs');
-const saltRounds = 10;
+const bcrypt = require("bcryptjs");
 
 const registrations = async (req, res) => {
   try {
@@ -39,25 +38,25 @@ const registrations = async (req, res) => {
       return res.json({ error: "User already exists" });
     }
 
-    bcrypt.hash(password, saltRounds, async function (err, hash) {
-      if (err) {
-        return res.json({ error: "Error hashing password" });
-      }
+    // Hash password using bcryptjs
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-      const user = new UserSchema({
-        fullname,
-        email,
-        password: hash,
-      });
-
-      await user.save();
-
-      // Registration successful
-      res.redirect('/login');
+    // Create new user
+    const user = new UserSchema({
+      fullname,
+      email,
+      password: hashedPassword,
     });
+
+    await user.save();
+
+    // Redirect after successful registration
+    res.redirect("/login");
+
   } catch (error) {
     console.error("Error in registration:", error);
-    res.json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
